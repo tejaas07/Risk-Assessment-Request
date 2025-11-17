@@ -1,17 +1,18 @@
-import mongoose from "mongoose";
-import app from "./app";
-import "dotenv/config";
-import logger from "./util/logger";
-import { connectDB } from "./database/db";
-import { config } from "./config";
+import express from "express";
+import { json } from "body-parser";
+import Routes from "./routes";
+import cors from "cors";
 
-const PORT = process.env.PORT || 8000;
+const app = express();
 
-const startServer = async () => {
-  await connectDB(); // Ensure DB is connected before starting the server
-  app.listen(config.port, () => {
-    logger.info(`🚀 Server running on port ${config.port}`);
-  });
-};
+app.use(cors({ origin: "*" }));
 
-startServer();
+app.use(express.json({ limit: "10kb" }));
+
+app.set("trust proxy", true);
+
+app.use("/apis", Routes);
+
+app.get("/show", (req, res) => res.send("API Running ✅"));
+
+export default app;
