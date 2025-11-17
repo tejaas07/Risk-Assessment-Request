@@ -1,5 +1,5 @@
-export const BASE_URL = "https://apis.tejaskadam.dev/apis";
-export const lOCAL_BASE_URL = "http://localhost:8085";
+export const BASE_URL = "https://apis.tejaskadam.dev/apis"; //for deployment
+export const lOCAL_BASE_URL = "http://localhost:8085/apis"; //for local setup
 
 const ENDPOINTS = {
   READ: "get",
@@ -7,6 +7,6 @@ const ENDPOINTS = {
 };
 
 export const API_PATHS = {
-  GET: `${BASE_URL}/${ENDPOINTS.READ}`,
-  ADD: `${BASE_URL}/${ENDPOINTS.WRITE}`,
+  GET: `${lOCAL_BASE_URL}/${ENDPOINTS.READ}`,
+  ADD: `${lOCAL_BASE_URL}/${ENDPOINTS.WRITE}`,
 };
