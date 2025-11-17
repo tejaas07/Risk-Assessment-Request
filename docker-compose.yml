@@ -1,0 +1,20 @@
+services:
+  rar-backend:
+    build: ./be-rar
+    image: rar-be:latest
+    pull_policy: never
+    container_name: rar-backend
+    ports:
+      - "8085:8085"
+    environment:
+      - PORT=8085
+
+  rar-frontend:
+    build: ./fe-rar
+    image: rar-fe:latest
+    pull_policy: never
+    container_name: rar-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
