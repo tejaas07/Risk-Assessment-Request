@@ -1,0 +1,143 @@
+body {
+  main {
+    min-height: 100vh;
+  }
+  .button-primary {
+    background: oklch(0.967 0.003 264.542);
+    color: oklch(0.21 0.034 264.665);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+    }
+  }
+
+  .stepform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50px;
+
+    .step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+
+        .step-count {
+          background-color: oklch(0.967 0.003 264.542);
+          color: oklch(0.21 0.034 264.665);
+          font-weight: bold;
+          padding: 5px 12px;
+          border-radius: 50%;
+          width: 34px;
+          height: 34px;
+
+          &.success {
+            background-color: green;
+            color: white;
+            padding: 9px 9px;
+            border-radius: 50%;
+          }
+        }
+
+        .step-line {
+          width: 2px;
+          background-color: oklch(0.967 0.003 264.542);
+          flex-grow: 1;
+          min-height: 16px;
+          margin: 5px 0px;
+
+          &.display {
+            background-color: oklch(0.967 0.003 264.542);
+          }
+        }
+      }
+
+      .step-field {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 32px;
+
+        .field-cateogry {
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+
+        .fields {
+          display: none;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          select {
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+
+            color: #898a8a;
+            option {
+              background-color: #131414;
+              border-radius: 10px 10px 10px 10px;
+            }
+          }
+
+          &.display {
+            display: flex;
+          }
+
+          .label {
+            margin-bottom: 5px;
+          }
+
+          .error-field {
+            margin: 7px 0px;
+            min-height: 20px;
+            .error {
+              color: red;
+              font-size: 0.8rem;
+              margin: 0rem;
+            }
+          }
+
+          textarea {
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+          }
+
+          input {
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+          }
+
+          .nav-btn-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+  .response-btn-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .dispaly-fields-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
