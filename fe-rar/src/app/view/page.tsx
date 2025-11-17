@@ -11,14 +11,13 @@ import React from "react";
 import useSWR from "swr";
 import LoadingCard from "@/components/LoadingCard";
 import ErrorCard from "@/components/ErrorCard";
+import { Spinner } from "@/components/ui/spinner";
+import { API_PATHS } from "@/utils/apiPaths";
 
 const page = () => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-  const { data, error, isLoading } = useSWR(
-    "http://localhost:8085/apis/get",
-    fetcher
-  );
+  const { data, error, isLoading } = useSWR(`${API_PATHS.GET}`, fetcher);
 
   return (
     <>
@@ -36,8 +35,22 @@ const page = () => {
         <div className="px-4 lg:px-6">
           <div className="flex flex-1 flex-col gap-10">
             <div className="flex flex-1 flex-col gap-10">
-              {error && <ErrorCard />}
-              {isLoading && <LoadingCard />}
+              {(error || isLoading) && (
+                <Card>
+                  <CardContent>
+                    {error && (
+                      <div className="flex items-center gap-4 justify-center py-10">
+                        Error loading data
+                      </div>
+                    )}
+                    {isLoading && (
+                      <div className="flex items-center gap-4 justify-center py-10">
+                        <Spinner className="size-10" />
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
               {data && <TableWrapper tableData={data?.data} />}
             </div>
           </div>

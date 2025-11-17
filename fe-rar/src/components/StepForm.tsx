@@ -7,6 +7,7 @@ import { VscCheck } from "react-icons/vsc";
 import { toast } from "react-toastify";
 import { ApiResponse, FormData } from "@/types/types";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { API_PATHS } from "@/utils/apiPaths";
 
 const StepForm = () => {
   const [step, setStep] = useState(1);
@@ -144,10 +145,7 @@ const StepForm = () => {
   const onSubmit = async (data: FormData) => {
     console.log("Form Submitted:", data);
     try {
-      const res = await axios.post<ApiResponse>(
-        "http://localhost:8085/apis/add",
-        data
-      );
+      const res = await axios.post<ApiResponse>(`${API_PATHS.ADD}`, data);
 
       setApiResponse(res.data);
       setViewComponent("response");
